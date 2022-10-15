@@ -38,11 +38,11 @@ public class Room {
     }
 
     //Create method to tell if the room is available or not
-    public String isAvailable() {
+    public boolean isAvailable() {
         if (number.charAt(0) == '0' && number.charAt(1) == '0') {
-            return "Available";
+            return true;
         } else {
-            return "Reserved";
+            return false;
         }
     }
 
