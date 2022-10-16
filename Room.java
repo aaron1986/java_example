@@ -1,3 +1,4 @@
+//Copy and paste your Room class below.
 public class Room {
 
     //Add Private fields to the Room Class
@@ -25,10 +26,6 @@ public class Room {
         return number;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
     public double getDailyRate() {
         return dailyRate;
     }
@@ -39,7 +36,7 @@ public class Room {
 
     //Create method to tell if the room is available or not
     public boolean isAvailable() {
-        if (number.charAt(0) == '0' && number.charAt(1) == '0') {
+        if (number.charAt(0) == '0' && number.charAt(1) == '0' || guest.isEmpty()) {
             return true;
         } else {
             return false;
@@ -54,12 +51,12 @@ public class Room {
     (3) The third character should in the room number must be either 'A', 'B' or 'C', otherwise the number is invalid.
     */
     public boolean verifyRoom() {
-        if(number.charAt(0) == '0' && number.charAt(1) == '0') {
-            return false;
-        } else if(number.length() >= 3 && number.charAt(2) == 'A' || number.charAt(2) == 'B' || number.charAt(2) == 'C') {
-            return true;
-        }
-        return false;
+      if(number.charAt(0) == '0' && number.charAt(1) == '0' || number.length() <= 2) {
+          return false;
+      } else if(number.length() == 3 && number.charAt(2) == 'A' ||number.charAt(2) == 'B' ||number.charAt(2) == 'C') {
+          return true;
+      }
+      return false;
     }
 
     /*
@@ -85,6 +82,11 @@ public class Room {
   Example: Single room 21A (available) Joe Bloggs.
   */
     public String description() {
-        return(getType() + " Room " + number + " (" + isAvailable() +  ") " + "" + guest);
+        if(isAvailable() == true) {
+            return (getType() + " room " + number + " (available) " + guest);
+        } else {
+            return (getType() + " room " + number + " (reserved) " + guest);
+        }
+        //return(getType() + " Room " + number + " (" + isAvailable() +  ") " + "" + guest);
     }
 }
