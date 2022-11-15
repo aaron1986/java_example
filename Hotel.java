@@ -40,7 +40,12 @@ public class Hotel {
         }
     }
 
-    //create method calculateBill two parameters Room and days
+    //calculateBill(Room, int). The method has a parameter for the Room and the number of days the room was occupied. 
+    //Calculate a bill for the room as its daily rate multiplied by the number of days the room was occupied. 
+    //If the room was occupied for at least four days, a 10% discount to the overall bill is applied. 
+    //The method should return the bill as a double value.
+    //You may assume that the number of days is at least 1. ]
+    
     public static double calculateBill(int Room, int days) {
         //double days = 1;
         double bill = 0;
