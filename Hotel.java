@@ -55,7 +55,10 @@ public class Hotel {
         }
         return bill;
     }
-
+    //getMatchingRooms(String) receives the type of a Room as a parameter 
+    //and returns an ArrayList of rooms in the hotel whose types match the parameter and which are unoccupied. 
+    //For example, calling the method with the parameter "Single" will return a list of all free rooms whose type is single. 
+    
     public ArrayList<Room> getMatchingRooms(String type) {
         ArrayList<Room> rooms1 = new ArrayList<Room>();
         for(Room room : rooms) {
