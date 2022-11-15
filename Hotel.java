@@ -69,10 +69,11 @@ public class Hotel {
         return rooms1;
     }
 
+    //vacancies() takes no parameters and returns the number of vacancies in the hotel rooms list as an int, 
+    //based on 1 vacancy for every single room, 2 for every double room, and 4 for every family room that is unoccupied.
+    
    public int vacancies() {
-
         int num_vancancies = 0;
         return num_vancancies;
-
     }
 }
