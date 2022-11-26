@@ -39,41 +39,54 @@ public class Hotel {
             i++;
         }
     }
-
-    //calculateBill(Room, int). The method has a parameter for the Room and the number of days the room was occupied. 
-    //Calculate a bill for the room as its daily rate multiplied by the number of days the room was occupied. 
-    //If the room was occupied for at least four days, a 10% discount to the overall bill is applied. 
-    //The method should return the bill as a double value.
-    //You may assume that the number of days is at least 1. ]
     
-    public static double calculateBill(int Room, int days) {
-        //double days = 1;
-        double bill = 0;
-        bill = Room *  days;
-        if(days <= 4) {
-            bill = bill * 10 / 100;
+        //create method calculateBill two parameters Room and days
+    public double calculateBill(Room r, int days) {
+        double bill = r.getDailyRate() * days;
+        if(days >= 4) {
+            bill = bill * 0.9;
         }
         return bill;
     }
-    //getMatchingRooms(String) receives the type of a Room as a parameter 
-    //and returns an ArrayList of rooms in the hotel whose types match the parameter and which are unoccupied. 
-    //For example, calling the method with the parameter "Single" will return a list of all free rooms whose type is single. 
-    
-    public ArrayList<Room> getMatchingRooms(String type) {
-        ArrayList<Room> rooms1 = new ArrayList<Room>();
-        for(Room room : rooms) {
-            if (room.getType().equals(type)) {
-                rooms1.add(room);
+     public ArrayList<Room> getMatchingRooms(String roomType) {
+        ArrayList<Room> matchingRooms = new ArrayList<>();
+
+        for(Room r : rooms) {
+            if(r.getType().equals(roomType) && r.getGuest().equals("")) {
+                matchingRooms.add(r);
             }
         }
-        return rooms1;
+        return matchingRooms;
     }
 
-    //vacancies() takes no parameters and returns the number of vacancies in the hotel rooms list as an int, 
-    //based on 1 vacancy for every single room, 2 for every double room, and 4 for every family room that is unoccupied.
+    public int vacancies() {
+        int num_vacancies = 0;
+        for(Room r : rooms) {
+            if(r.getType().equals("Single") && r.getGuest().equals("")) {
+                num_vacancies++;
+            } else if (r.getType().equals("Double") && r.getGuest().equals("")) {
+                num_vacancies+=2;
+            } else if (r.getType().equals("Family") && r.getGuest().equals("")) {
+                num_vacancies +=4;
+            }
+        }
+        return num_vacancies;
+    }
     
-   public int vacancies() {
-        int num_vancancies = 0;
-        return num_vancancies;
+public void bookRoom(Room r) {
+        for(Room room : rooms) {
+            if(room.getNumber().equals(r.getNumber())) {
+                room.setGuest("Guest");
+            }
+        }
+    }
+    
+    public void removeRoom(String roomNumber) {
+        for(int i = 0; i < rooms.size(); i++) {
+            Room r = rooms.get(i);
+            if(r.getNumber().equals(roomNumber)) {
+                rooms.remove(i);
+            }
+        }
     }
 }
