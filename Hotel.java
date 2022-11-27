@@ -75,14 +75,16 @@ public class Hotel {
             }
         }
     }
-
-    public void removeRoom(String roomNumber) {
-        for (Room room : rooms) {
-            if (room.getNumber().equals(roomNumber)) {
-                rooms.remove(room);
-            } else {
-                System.out.println("Room " + roomNumber + " not found!");
+    
+ public void removeRoom(String roomNumber) {
+        for(int i = 0; i < rooms.size(); i++) {
+            Room r = rooms.get(i);
+            if(r.getNumber().equals(roomNumber))
+            {
+                rooms.remove(i);
+                return;
             }
         }
+        System.out.println("Room " + roomNumber + " not found!");
     }
 }
